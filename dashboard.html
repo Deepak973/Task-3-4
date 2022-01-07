@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Dashboard</title>
+    <style>
+.container-fluid
+{
+    background-color: #E7E7E7;
+}
+.metrics
+{
+    background-color: #ffffff;
+    border-left: 5px solid #40BE98;
+}
+.green-text
+{
+    color:green;
+}
+.red-text
+{
+    color: red;
+}
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid p-5">
+        <h3>Company Metrics</h3>
+        <div class="row">
+            
+            <div class="col-md-3">
+                <div class="metrics m-2 p-2">
+                    <h4 class="green-text">$ 406,411.29</h4>
+                    <h6 class="mt-3">Total Revenue</h6>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="metrics m-2 p-2">
+                    <h4>$ 620</h4>
+                    <h6 class="mt-3">Total Jobs Avg.</h6>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="metrics m-2 p-2">
+                    <h4>655</h4>
+                    <h6 class="mt-3">Ticket Created</h6>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="metrics m-2 p-2">
+                    <h4>735</h4>
+                    <h6 class="mt-3">Ticket Scheduled</h6>
+                </div>
+            </div>
+
+            <div class="col-md-3 mt-4">
+                <div class="metrics m-2 p-2">
+                    <h4 class="red-text">$ 110,448.8</h4>
+                    <h6 class="mt-3">Outstanding Amount</h6>
+                </div>
+            </div>
+            <div class="col-md-3 mt-4">
+                <div class="metrics m-2 p-2">
+                    <h4>105</h4>
+                    <h6 class="mt-3">Memberships Sold</h6>
+                </div>
+            </div>
+            <div class="col-md-3 mt-4">
+                <div class="metrics m-2 p-2">
+                    <h4>436</h4>
+                    <h6 class="mt-3">Jobs Completed</h6>
+                </div>
+            </div>
+            <div class="col-md-3 mt-4">
+                <div class="metrics m-2 p-2">
+                    <h4>65</h4>
+                    <h6 class="mt-3">Total Canceled</h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <h3>Revenue by Job Location</h3>
+                <canvas id="Chart1" style="width:100%;"></canvas>
+            </div>
+            <div class="col-md-6">
+                <h3>Revenue by Job Type</h3>
+                <canvas id="Chart2" style="width:100%;"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+
+
+    <script>
+        var xValuesforchart1 = ["Everett", "Seattle", "Lynnwood", "Bothell","Mukilteo", "EdMonds"];
+        var yValuesforchart1 = [90, 80, 49, 47, 46, 34];
+        var barColors = "#40BE98"
+        var xValuesforchart2 = ["Service Plumbing", "Bid Work HVAC", "Service HVAC", "Bid Work Plumbing" , "HWT Replacement" , "Maintence", "Material Sale"]
+        var yValuesforchart2 = [160, 130, 80, 76, 43, 42, 10];
+
+        new Chart("Chart1", {
+          type: "bar",
+          data: {
+            labels: xValuesforchart1,
+            datasets: [{
+              backgroundColor: barColors,
+              data: yValuesforchart1
+            }]
+          },
+          options: {
+          indexAxis: 'y',
+            
+            plugins: {
+                    legend: {display: false},
+                    title: {
+                        display: true,
+                        text: 'Revenue for November 2019',
+                        position: 'bottom'
+                    }
+                }
+          }
+        });
+
+
+        new Chart("Chart2", {
+          type: "bar",
+          data: {
+            labels: xValuesforchart2,
+            datasets: [{
+              backgroundColor: barColors,
+              data: yValuesforchart2
+            }]
+          },
+          options: {
+          indexAxis: 'y',
+            
+            plugins: {
+                    legend: {display: false},
+                    title: {
+                        display: true,
+                        text: 'Revenue for November 2019',
+                        position: 'bottom'
+                    }
+                }
+          }
+        });
+    </script>
+  </body>
+</html>

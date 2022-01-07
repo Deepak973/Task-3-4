@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Task-3</title>
+ <link rel="stylesheet" type="text/css" href="Task3.css">
+</head>
+<body>
+<script type="text/javascript">
+
+		function validateEmail(){
+			var mail = document.getElementById("uname").value;
+			var pass = document.getElementById("pass").value;
+			
+			var email_regx = /^([a-zA-Z0-9\._]+)@([a-zA-Z0-9])+[.]([a-z]+)(.[a-z]+)?$/;
+			var pwd_regx = /^((?=.*[A-Z])(?=.*[0-9]))/;
+			var pwd_regxSymbol = /[*|\":<>[\]{}`\\()';&$!-]/;
+
+			
+			if(email_regx.test(mail)){
+
+				document.getElementById("lbluser").style.visibility="hidden";
+
+				if(pwd_regx.test(pass)){
+					document.getElementById("lblpass").style.visibility="hidden";
+
+					if(pwd_regxSymbol.test(pass))
+					{
+						document.getElementById("lblpass").style.visibility="visible";
+						return false;
+
+					}
+					else{
+					document.getElementById("lblpass").style.visibility="hidden";
+                    if(pass=="SmartServTest@123")
+                    {
+                    	return true;
+                    }
+                    document.getElementById("lblpass").style.visibility="visible";
+                    return false;
+					
+
+				}
+				}
+				else
+				{
+					document.getElementById("lblpass").style.visibility="visible";
+					return false;
+				}
+					
+				}
+			else
+			{
+		    	document.getElementById("lbluser").style.visibility="visible";
+				return false;
+			}
+
+		}
+	</script>
+   <div class="container">
+   	<div class="centered">
+	<form action="dashboard.html" method="POST">
+		<img src="logo.jpg" style="height:130px; width:330px;"><br><br>
+
+		<input type="text" placeholder="Username" class="textbox" id="uname" ><br>
+		<label id ="lbluser" style="color: red; visibility: hidden;">Invalid Username!</label><br>
+
+		<input type="password" placeholder="Password" class="textbox" id="pass" ><br>
+		<label id ="lblpass" style="color: red; visibility: hidden;">Invalid Password!</label><br><br>
+
+		<input type="submit" value="Login" class="button" onclick="return validateEmail()"><br><br>
+		<a href="mailto: support@smartserv.io" style="color: grey">Forgot your password?</a>
+	</form>
+   </div>
+    </div>
+</body>
+</html>
